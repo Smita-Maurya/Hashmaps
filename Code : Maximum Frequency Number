@@ -1,0 +1,27 @@
+#include<unordered_map>
+int highestFrequency(int arr[], int n) {
+    
+   
+    unordered_map<int , int> map;
+    int maxcount=1;
+    for(int i=0; i<n ; i++){
+        if(map.count(arr[i])>0){
+            map[arr[i]]++;
+            if(map[arr[i]]>maxcount){
+                maxcount= map[arr[i]];
+            }
+        }
+        else
+        map[arr[i]]=1;
+    }
+   // return map.count();
+   int ans;
+   for(int i=0;i<n;i++){
+        if(map[arr[i]]==maxcount){
+            ans=arr[i];
+            break;
+        }
+   }
+   return ans;
+    
+}
