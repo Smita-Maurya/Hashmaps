@@ -1,0 +1,40 @@
+#include <unordered_set>
+
+vector<int> longestConsecutiveIncreasingSequence(int *arr, int n) {
+    // Your Code goes here
+    unordered_set<int> elements;
+    
+    for(int i = 0; i < n; i++) {
+        elements.insert(arr[i]); 
+    }
+    
+    int maxLength = 0;
+    int startingElement;
+    int endingElement;
+    
+    for(int i = 0; i < n; i++) {
+        
+        if(elements.find(arr[i] - 1) != elements.end()) {  
+            continue;
+        } else { 
+            int next = arr[i];
+        	while(elements.find(next) != elements.end()) {
+                next++;
+            }
+            if(maxLength < next - arr[i]) {
+                maxLength = next - arr[i];
+                startingElement = arr[i];
+                endingElement = next - 1;
+            }
+        }
+    }
+    
+    if(maxLength == 1) {
+        return {startingElement};
+    } else {
+        return {startingElement, endingElement};
+    }
+}
+
+
+ 
