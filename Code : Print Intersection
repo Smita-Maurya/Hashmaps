@@ -1,0 +1,27 @@
+#include<unordered_map>
+void printIntersection(int arr1[], int arr2[], int n, int m) {
+    if(n==0||m==0){
+        return ;
+    }
+    unordered_map<int,int> map;
+    for(int i=0;i<n;i++){
+        //map[arr1[i]];
+        if(map.count(arr1[i])==0){
+            map[arr1[i]]=1;
+        }
+        else{
+            map[arr1[i]]+=1;
+        }
+    }
+        for(int j=0;j<m;j++){
+             if(map.count(arr2[j])==1){
+                 if(map[arr2[j]]==0)
+                 continue;
+                 cout<<arr2[j]<<endl;
+                 map[arr2[j]]-=1;
+             }
+
+        }
+    
+    
+}
