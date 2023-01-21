@@ -1,0 +1,27 @@
+#include<unordered_map>
+int pairSum(int *arr, int n) {
+	if(n==0){
+		return 0;
+	}
+	unordered_map<int , int> map;
+	int maxcount=0;
+	for(int i=0; i<n ; i++){
+      if(map.count(arr[i])==0){
+		  map[arr[i]]=1;
+	  }
+	  else{
+		  map[arr[i]]++;
+	  }
+          if (map.count(-arr[i])) {
+            maxcount = maxcount + map[-arr[i]];
+          }
+		  if(arr[i]==0){
+			  maxcount--;
+		  }
+		  
+        }
+	 
+	return maxcount;
+	
+	 
+}
